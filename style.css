@@ -1,0 +1,236 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
+html, body { 
+    height: 100%;
+} 
+
+body {
+    background-color: rgb(20,22,23);
+    padding: 5vh;
+    font-family: 'Noto Sans', sans-serif;
+    color: rgb(197,193,186);
+}
+
+::-webkit-scrollbar {
+    display:none;
+}
+
+hr {
+    background-color: white;
+    animation: slide-left ease-out 3s forwards;
+}
+
+.up {
+    animation: slide-up 6s ease-out;
+}
+
+.clock {
+    font-size: 5vh;
+    animation: slide-right 3s ease-out;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    line-height: 1px;
+}
+
+.header img {
+    border-radius: 50%;
+    align-items: center;
+    justify-content:flex-end;
+}
+
+.songFlex{
+    display: flex;
+    gap: 10%;
+    justify-content: space-evenly;
+}
+
+.thumbnail {
+    border: white solid 6px;
+
+    float: right;
+    width: 25%;
+    background-size: cover;
+    padding: 15px;
+    background-repeat: no-repeat;
+    background-position: center;
+    user-select: none;
+}
+
+.thumbnail img{
+    width: 100%;
+    height: auto;
+    -webkit-user-drag: none;
+}
+
+.progressContainer{
+    display: flex;
+    width: 25vw;
+    height: 40vh;
+    border: 6px solid rgba(255, 255, 255, 0.041);
+    flex-direction: column;
+    gap: 5%;
+}
+
+.artist {
+    display: none;
+}
+
+.progress {
+    background-color: white;
+    height: 5vh;
+    border-right: rgb(197,193,186) 3px solid;
+    opacity: 0;
+}
+
+.time {
+    margin-top: 3vh;
+    margin-left: 1vw;
+    opacity: 0;
+    user-select: none;
+    text-align: center;
+}
+
+.songName {
+    margin: 2.5vh;
+    font-size: 3vh;
+    border-top: 3px white solid;
+    padding: 12px;
+    background-color: rgb(29, 29, 29);
+    display: block;
+    text-align: center;
+}
+
+.artistName {
+    color: white;
+    font-size: 2vh;
+    border-top: 3px white solid;
+    display: inline;
+    padding: 1vw;
+    text-align: center;
+}
+
+.songSelect {
+    padding-left: 1vw; padding-right: 1vw;
+    border-right: solid white 3px;
+    border-left: solid white 3px;
+    animation: slide-down 3s ease-in-out forwards;
+    user-select: none;
+    width: 25%;
+    background-color: black;
+    max-height: fit-content;
+    position: relative;
+    overflow-x: visible;
+}
+
+.songSelect:hover{
+    cursor: none;
+}
+
+.songSelect .song {
+    background-color: rgb(29, 29, 29);
+    line-height: 2.5vh;
+    border-top: white solid 3px;
+    border-bottom: white solid 3px;
+    margin-top: 1vh;
+    padding-left: 1vw;
+    transition: ease-in-out 0.3s;
+    animation: inwards 3s ease-in-out;
+}
+
+.songSelect .songO {
+    background-color: rgb(29, 29, 29);
+    line-height: 2.5vh;
+    border-top: white solid 3px;
+    border-bottom: white solid 3px;
+    margin-top: 1vh;
+    padding-left: 1vw;
+    transition: ease-in-out 0.3s;
+    animation: inwardsFade 3s ease-in-out;
+}
+
+.songSelect .song:hover {
+    background-color: white;
+    color: rgb(49, 49, 49);
+}
+
+.songSelect .songO:hover {
+    background-color: white;
+    color: rgb(49, 49, 49);
+}
+
+@keyframes slide-left {
+    from {width: 10px;}
+    to {width: 24vw;}
+}
+
+@keyframes slide-up {
+    from {
+        transform: translate(4vw, 8vh);
+        opacity: 0%;
+    }
+    50% {
+        opacity: 0.1%;
+    }
+}
+
+@keyframes slide-right {
+    from {
+        transform: translate(-4vw);
+        opacity: 0%;
+    }
+    50% {
+        opacity: 0.1%;
+    }
+}
+
+@keyframes inwards {
+    from {
+        width: 50vw;
+        opacity: 0%;
+    }
+
+    75% {
+        background-color: transparent;
+    }
+
+    to {
+        width: 96%;
+    }
+}
+
+@keyframes inwardsFade {
+    from {
+        width: 50vw;
+        opacity: 96%;
+    }
+
+    75% {
+        background-color: transparent;
+    }
+
+    to {
+        width: 96%;
+        opacity: 0%;
+    }
+}
+
+@keyframes slide-down {
+    from {
+        height: 50vh;        
+        border-color: rgb(0, 0, 0);
+    }
+
+    to {
+        height: 39vh;
+    }
+}
+
+@keyframes scroll {
+    to {
+        overflow-y: auto;
+    }
+}

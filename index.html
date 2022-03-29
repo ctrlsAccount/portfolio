@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+
+    <title>Jukebox</title>
+</head>
+<body>
+    
+    <div class="header">
+        <h1 class="up">Thad's corner</h1>
+        <div class="clock" id="clock"></div>
+    </div>
+    <hr align="left">
+    <br><br><br>
+
+    <div class="songFlex">
+        <!--
+            # TEMPLATE
+             <div class="songO" onclick="loadSong(this.id)" id="play">
+                <h2>
+
+                </h2>
+                <div class="artist">
+                    
+                </div>
+            </div>
+        -->
+        <div class="songSelect" id="Menu">
+            <div class="song" onclick="loadSong(this.id)" id="play">
+                <h2>A Devil's Touch in the Midwest</h2>
+                <span class="artist">Macabre Plaza</span>
+            </div>
+            <div class="song" onclick="loadSong(this.id)" id="play1">
+                <h2>E36</h2>
+                <span class="artist">Ssjishmael</span>
+            </div>
+            <div class="song" onclick="loadSong(this.id)" id="play2">
+                <h2>Fairies</h2>
+                <span class="artist">Imagiro</span>
+            </div>
+            <div class="song" onclick="loadSong(this.id)" id="play3">
+                <h2>Ok Boomer</h2>
+                <span class="artist">Peter Kuli, Jed Will</span>
+            </div>
+            <div class="song" onclick="loadSong(this.id)" id="play4">
+                <h2>Meet Yo Maker</h2>
+                <span class="artist">Almighty Guerilla</span>
+            </div>
+            <div class="songO" onclick="loadSong(this.id)" id="play5">
+                <h2>Insignificant</h2>
+                <span class="artist">Smoke Trees</span>
+            </div>
+            <div class="songO" onclick="loadSong(this.id)" id="play6">
+                <h2>Archy</h2>
+                <span class="artist">Jetson</span>
+            </div>
+            <div class="songO" onclick="loadSong(this.id)" id="play7">
+                <h2>Man Down</h2>
+                <span class="artist">Lilbubblegum</span>
+            </div>
+            <div class="songO" onclick="loadSong(this.id)" id="play8">
+                <h2>
+                    A Swollen Song
+                </h2>
+                <div class="artist">Jaxxon D. Silva
+                </div>
+            </div>
+
+        </div>
+        
+        <!--  LOAD BAR W ARTIST NAME  -->
+        <div class="progressContainer">
+
+            <div class="songName" id="sn"></div>
+
+            <span class="artistName" id="artist"></span>
+
+            <div class="time" id="time"></div>
+
+            <div class="progress" id="bar"></div>
+        </div>
+
+        <div class="thumbnail" >
+            <img alt="" id="img">
+        </div>
+
+    </div>
+
+   
+
+</body>
+</html>
