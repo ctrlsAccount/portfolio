@@ -86,6 +86,23 @@ hr {
     opacity: 0;
 }
 
+.volume {
+    -webkit-appearance: none !important;
+    height: 1vh;
+    background-color: rgb(29, 29, 29);
+    justify-self: flex-end;
+    align-self: center;
+
+    border-bottom: white solid 3px;
+}
+
+.volume::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background: gray;
+    height:1vh;
+    width:0.5vw;
+}
+
 .time {
     margin-top: 3vh;
     margin-left: 1vw;

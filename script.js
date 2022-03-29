@@ -4,6 +4,7 @@ var bar = document.getElementById("bar")
 var progressTime = document.getElementById("time") 
 var song_name = document.getElementById("sn")
 var artist = document.getElementById('artist');
+var volume = document.getElementById('vol')
 var playing = false;
 
 function showTIme() {
@@ -71,6 +72,11 @@ function loadSong(click_id) {
             if (progressCurrent_S == 0, intTime < 60) {
                 progressCurrent_S = intTime
             }
+
+            // Slide bar # Volume
+            songplay.volume = vol.value / 10
+            console.log(vol.value)
+            console.log(songplay.volume)
             /* 
 
             songplay.currentTime =
@@ -101,7 +107,7 @@ function loadSong(click_id) {
                 reachedEnd = false
             }
             if (reachedEnd == false){
-                setTimeout(track, 1000)
+                setTimeout(track, 500)
             }
 
             if (currentTime != 0){
