@@ -75,9 +75,11 @@ function loadSong(click_id) {
 
             // Slide bar # Volume
             songplay.volume = vol.value / 10
+ 
+            /* 
+
             console.log(vol.value)
             console.log(songplay.volume)
-            /* 
 
             songplay.currentTime =
 
