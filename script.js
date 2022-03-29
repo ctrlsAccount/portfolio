@@ -77,7 +77,7 @@ function loadSong(click_id) {
             songplay.volume = vol.value / 10
  
             /* 
-
+            # volume
             console.log(vol.value)
             console.log(songplay.volume)
 
