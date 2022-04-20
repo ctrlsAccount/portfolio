@@ -1,11 +1,16 @@
-var songs = document.getElementById("Menu")
+// probably didn't delete anything redundant because of how lazy I am. Hope I didn't :)
+
 var img = document.getElementById("img")
 var bar = document.getElementById("bar")
 var progressTime = document.getElementById("time") 
 var song_name = document.getElementById("sn")
 var artist = document.getElementById('artist');
-var volume = document.getElementById('vol')
+var vol = document.getElementById('vol')
+var genres = document.getElementById('genres')
+var songSelect = document.getElementsByClassName('songSelect')
+var genre_clicked = 0;
 var playing = false;
+var container = document.getElementById('container_p')
 
 function showTIme() {
     var date = new Date();
@@ -35,11 +40,14 @@ function loadSong(click_id) {
 
     let id = click_id
     var played = document.getElementById(id).firstElementChild.innerText;
+    let genre_name = document.getElementById('genreName') 
+    genre_name.innerText = document.getElementById(id).parentNode.id
     var audio = new Audio(`audio/${played}.mp3`);
     img.src = `img/${played}.jpg`
     var text = document.getElementById(id).children[1].innerText
     song_name.innerText = played
     artist.innerText = text
+    bar.style.backgroundColor = "white";
 
     reachedEnd = false
 
@@ -74,35 +82,17 @@ function loadSong(click_id) {
             }
 
             // Slide bar # Volume
-            songplay.volume = vol.value / 10
- 
-            /* 
-            # volume
-            console.log(vol.value)
-            console.log(songplay.volume)
-
-            songplay.currentTime =
-
-
-           // # DISPLAY # Duration
-            console.log(`Duration: ${songD}`)
-            console.log(`Decimal: ${progressMath}`)
-            console.log(`Minutes: ${progressMinutes}`)
-            console.log(`Seconds: ${progressSeconds}`)
-            */
-
-            /*
-            // # DISPLAY # Duration
-            console.log(`Raw: ${progressCurrent_M_raw}`)
-            console.log(`Minutes: ${progressCurrent_M}`)
-            console.log(`Seconds: ${progressCurrent_S}`)
-            console.log(intTime)
-            */
-
+            songplay.volume = vol.value / 50
             bar.style.width = `${Math.round(progressValue * 100)}%`;
             document.getElementById("time") .innerHTML = `0${progressCurrent_M}:${progressCurrent_S} | ${progressMinutes}:${progressSeconds}`;
-            if (currentTime == songplay.duration){
-                reachedEnd = true
+            // resets music player
+            if (songplay.ended == true){
+                img.src = ''
+                sn.innerText = ""
+                artist.innerText = ""
+                time.innerText = ""
+                playing = false;
+                bar.style.width = "0px";
             }
             if (reachedEnd == true){
                 songplay.currentTime = 0
@@ -119,9 +109,7 @@ function loadSong(click_id) {
             else {
                 progressTime.style.opacity = 0;
             }
-
             }
-    
         track()
     
         if (consoleTest == consoleSong) {            
@@ -131,8 +119,6 @@ function loadSong(click_id) {
         }
     }
     else {
-        // if audio path is not the same then copy code from if playing == true
-        // if audio path is the same as current audiopath then get currentTime when pausing and set previous currentTime when playing
         consoleSong = songplay.src
         consoleTest = audio.src
         progress = songplay.currentTime
@@ -140,6 +126,7 @@ function loadSong(click_id) {
         if (consoleTest == consoleSong) {
             playing = false
             songplay.pause();
+            bar.style.backgroundColor = "rgb(197,193,186)";
         }
         else {
             songplay.currentTime = 0
@@ -152,8 +139,48 @@ function loadSong(click_id) {
     }
 }
 
-setTimeout(function(){
-    songs.style.overflowY = "scroll"
-}, 3000)
+function show(click){
+        let id_g = document.getElementById(click)
+        let spanText = document.getElementById(click).innerText
+        let id = document.getElementById(spanText)
+        appearance()
+        id.style.display = "unset";
+        id.style.overflowY = "visible";
+        hide(click);
+        //genre button
+        disappearance();
+        id_g.style.backgroundColor = "white"
+        id_g.style.color = "black"
+        id_g.style.cursor = "default"
+        id_g.onclick = ""; 
+    }
+
+function hide(genre_id){
+    let genre_a = genre_id
+        setTimeout(function(){
+            let genre_b = genre_id
+            if (genre_b == genre_a){
+            let spanText = document.getElementById(genre_id).innerText
+            let id = document.getElementById(spanText)
+            id.style.overflowY = "scroll"
+        }
+        }, 3000)
+    }
+
+function appearance(){
+    for (let i = 0; i < songSelect.length; i++) {
+        songSelect[i].style.display = "none"
+      }
+}
+
+function disappearance(){
+    let subgenres = document.getElementsByClassName('genre_E')
+    for (let i = 0; i < subgenres.length; i++){
+        subgenres[i].setAttribute('onclick', 'show(this.id)');
+        subgenres[i].style.backgroundColor = "black"
+        subgenres[i].style.color = "white"
+        subgenres[i].style.cursor = "pointer"
+}
+}
 
 showTIme()
